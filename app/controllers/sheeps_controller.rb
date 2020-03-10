@@ -14,10 +14,12 @@ class SheepsController < ApplicationController
 
   def new
     @sheep = Sheep.new
+    authorize @sheep
   end
 
   def create
     @sheep = Sheep.new(sheep_params)
+    authorize @sheep
     @sheep.user = current_user
     if @sheep.save
       redirect_to @sheep, notice: "Your sheep's card was successfully created."
@@ -43,6 +45,7 @@ class SheepsController < ApplicationController
 
   def set_sheep
     @sheep = Sheep.find(params[:id])
+    authorize @sheep
   end
 
   def sheep_params
