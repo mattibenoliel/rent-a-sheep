@@ -1,1 +1,9 @@
 <h1><%= @sheep.nickname %></h1>
+<div>
+<p> <%= @sheep.nickname.capitalize %> can crop <%=@sheep.square_meter_per_hour%> meters square per hour. </p>
+</div>
+<div>
+<p>Price : <%=@sheep.price_per_day %> euros per day</p>
+</div>
+
+<%= link_to "Back to all sheeps", sheeps_path %>
