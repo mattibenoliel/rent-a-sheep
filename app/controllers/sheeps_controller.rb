@@ -1,7 +1,7 @@
 class SheepsController < ApplicationController
   before_action :set_sheep, only: [:show, :destroy, :edit, :update]
   def index
-    @sheeps = Sheep.all
+    @sheeps = policy_scope(Sheep)
   end
 
   def show;  end
