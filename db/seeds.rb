@@ -25,4 +25,4 @@ puts "Creating our seed..."
   puts "\n\n"
 end
 
-puts "Seed creation done !"
+puts "Seed creation: done !"
