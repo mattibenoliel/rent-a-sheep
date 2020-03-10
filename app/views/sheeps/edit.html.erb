@@ -1,14 +1,19 @@
-<!-- app/views/restaurants/_form.html.erb -->
 <%= simple_form_for(@sheep) do |f| %>
-  <% if @sheep.errors.any? %>
-    <div class="errors-container">
-      <ul>
-        <% @edit.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <!-- [...] all the fields -->
+  <div class="form-inputs">
+    <%= f.input :nickname %>
+    <%= f.input :square_meter_per_hour %>
+    <%= f.input :price_per_day %>
+    <%= f.input :available %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>
+
+<%= link_to "Sheep", @sheep %>
+
+<%= link_to "Back", sheeps_path %>
