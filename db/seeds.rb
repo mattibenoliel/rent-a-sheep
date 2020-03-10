@@ -8,6 +8,8 @@
 
 
 require 'faker'
+require 'open-uri'
+
 puts "Reset users and Sheep..."
   # Supprimer les users
   User.destroy_all
@@ -24,6 +26,7 @@ puts "Reset users and Sheep..."
 puts "Creating our seed..."
 
 10.times do |i|
+  file = URI.open('https://source.unsplash.com/featured/?sheep')
   sheep = Sheep.create(
     nickname:Faker::Games::Zelda.character,
     square_meter_per_hour: rand(1..380),
@@ -31,6 +34,8 @@ puts "Creating our seed..."
     price_per_day:rand(1..130),
     user:  users.sample
   )
+  sheep.photo.attach(io:file,filename: 'sheep.jpeg')
+
   puts "User: #{sheep.user.email}"
 
   puts "Nickname: #{sheep.nickname}"
