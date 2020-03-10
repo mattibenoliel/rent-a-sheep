@@ -4,7 +4,9 @@ class SheepsController < ApplicationController
     @sheeps = policy_scope(Sheep)
   end
 
-  def show;  end
+  def show
+    @booking = Booking.new
+  end
 
   def destroy
     @sheep.destroy
@@ -49,7 +51,7 @@ class SheepsController < ApplicationController
   end
 
   def sheep_params
-    params.require(:sheep).permit(:nickname, :square_meter_per_hour,:price_per_day, :available)
+    params.require(:sheep).permit(:nickname, :square_meter_per_hour,:price_per_day, :available, :photo)
   end
 
 
