@@ -31,7 +31,7 @@ puts "Creating our seed..."
     price_per_day:rand(1..130),
     user:  users.sample
   )
-  puts "User: #{sheep.user}"
+  puts "User: #{sheep.user.email}"
 
   puts "Nickname: #{sheep.nickname}"
 
