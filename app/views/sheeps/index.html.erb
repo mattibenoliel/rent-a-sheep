@@ -1,1 +1,11 @@
-<h2>index sheeps</h2>
+<h1>All sheeps</h1>
+
+<% @sheeps.each do |sheep| %>
+  <%= sheep.nickname %>
+  <span><%= link_to sheep_path(sheep),
+    method: :delete,
+    data: { confirm: "Are you sure?" } do %>
+    <i class="las la-trash-alt"></i>
+    <% end %>
+  </span>
+<% end %>
