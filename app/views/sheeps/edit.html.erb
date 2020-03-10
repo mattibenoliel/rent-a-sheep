@@ -1,0 +1,14 @@
+<!-- app/views/restaurants/_form.html.erb -->
+<%= simple_form_for(@sheep) do |f| %>
+  <% if @sheep.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @edit.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- [...] all the fields -->
+<% end %>
