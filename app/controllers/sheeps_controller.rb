@@ -4,7 +4,9 @@ class SheepsController < ApplicationController
     @sheeps = policy_scope(Sheep)
   end
 
-  def show;  end
+  def show
+    @booking = Booking.new
+  end
 
   def destroy
     @sheep.destroy
