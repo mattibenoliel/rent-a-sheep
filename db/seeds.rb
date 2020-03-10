@@ -7,3 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+require 'faker'
+
+puts Faker::Name.name
+
+10.times do |i|
+  sheep = Sheep.create(nickname:Faker::Games::Zelda.character,square_meter_per_hour: rand(1..380),available:[true, false].sample, price_per_day:rand(1..130))
+
+  puts "Nickname: #{sheep.nickname}"
+
+  puts "Square Meter Per Hour: #{sheep.square_meter_per_hour}"
+
+  puts "Available: #{sheep.available}"
+
+  puts "Price per day: #{sheep.price_per_day}"
+
+  puts "\n\n"
+
+
+
+end
+
+
+# id: nil, nickname: nil, square_meter_per_hour: nil, available: nil, price_per_day: nil, user_id: nil, created_at: nil, updated_at: nil>
