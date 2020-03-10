@@ -51,7 +51,7 @@ class SheepsController < ApplicationController
   end
 
   def sheep_params
-    params.require(:sheep).permit(:nickname, :square_meter_per_hour,:price_per_day, :available)
+    params.require(:sheep).permit(:nickname, :square_meter_per_hour,:price_per_day, :available, :photo)
   end
 
 

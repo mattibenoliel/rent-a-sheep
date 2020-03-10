@@ -7,15 +7,27 @@
 
 <div>
   <% @sheeps.each do |sheep| %>
-    <%= link_to sheep.nickname, sheep_path(sheep) %>
-      <span>
-        <% if policy(sheep).destroy? %>
-          <%= link_to sheep_path(sheep),
-                method: :delete,
-                data: { confirm: "Are you sure?" } do %>
-            <i class="las la-trash-alt"></i>
+    <div>
+      <%= link_to sheep.nickname, sheep_path(sheep) %>
+        <span>
+          <% if policy(sheep).destroy? %>
+            <%= link_to sheep_path(sheep),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } do %>
+              <i class="las la-trash-alt"></i>
+            <% end %>
           <% end %>
-        <% end %>
-      </span>
+        </span>
+        <div>
+          <%if sheep.photo.attached?%>
+            <%= cl_image_tag sheep.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        </div>
+      </div>
   <% end %>
 </div>
+
+
+
+
+
