@@ -1,5 +1,5 @@
 class SheepsController < ApplicationController
-  before_action :set_sheep, only: [:show, :destroy]
+  before_action :set_sheep, only: [:show, :destroy, :edit, :update]
   def index
     @sheeps = Sheep.all
   end
@@ -26,6 +26,19 @@ class SheepsController < ApplicationController
     end
   end
 
+  def edit
+   @sheep = Sheep.find(params[:id])
+  end
+
+
+ def update
+     if @sheep.update(sheep_params)
+       redirect_to sheep_path(@sheep)
+     else
+       render :edit
+     end
+ end
+
   private
 
   def set_sheep
@@ -35,4 +48,7 @@ class SheepsController < ApplicationController
   def sheep_params
     params.require(:sheep).permit(:nickname, :square_meter_per_hour,:price_per_day, :available)
   end
+
+
+
 end
