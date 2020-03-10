@@ -5,5 +5,14 @@
 <div>
 <p>Price : <%=@sheep.price_per_day %> euros per day</p>
 </div>
+<% if policy(@sheep).edit? %>
+  <%= link_to "Edit", edit_sheep_path(@sheep) %>
+<% end %>
 
 <%= link_to "Back to all sheeps", sheeps_path %>
+
+
+
+
+
+
