@@ -1,11 +1,16 @@
 <h1>All sheeps</h1>
+<div>
+  <h5><%= link_to "Put my sheep on rent", new_sheep_path%></h5>
+</div>
 
-<% @sheeps.each do |sheep| %>
-  <%= sheep.nickname %>
-  <span><%= link_to sheep_path(sheep),
-    method: :delete,
-    data: { confirm: "Are you sure?" } do %>
-    <i class="las la-trash-alt"></i>
-    <% end %>
-  </span>
-<% end %>
+<div>
+  <% @sheeps.each do |sheep| %>
+    <%= link_to sheep.nickname, sheep_path(sheep) %>
+    <span><%= link_to sheep_path(sheep),
+      method: :delete,
+      data: { confirm: "Are you sure?" } do %>
+      <i class="las la-trash-alt"></i>
+      <% end %>
+    </span>
+  <% end %>
+</div>
