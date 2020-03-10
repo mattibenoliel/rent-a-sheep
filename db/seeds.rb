@@ -7,3 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+require 'faker'
+
+puts "Creating our seed..."
+
+10.times do |i|
+  sheep = Sheep.create(nickname:Faker::Games::Zelda.character,square_meter_per_hour: rand(1..380),available:[true, false].sample, price_per_day:rand(1..130))
+
+  puts "Nickname: #{sheep.nickname}"
+
+  puts "Square Meter Per Hour: #{sheep.square_meter_per_hour}"
+
+  puts "Available: #{sheep.available}"
+
+  puts "Price per day: #{sheep.price_per_day}"
+
+  puts "\n\n"
+end
+
+puts "Seed creation done !"
