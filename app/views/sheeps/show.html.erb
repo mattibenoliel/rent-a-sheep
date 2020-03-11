@@ -1,6 +1,7 @@
 <h1><%= @sheep.nickname %></h1>
 <div>
   <p> <%= @sheep.nickname.capitalize %> can crop <%=@sheep.square_meter_per_hour%> meters square per hour. </p>
+  <p> <%= @sheep.nickname.capitalize %> belongs to <%=@sheep.user.first_name%> </p>
 </div>
 <div>
   <p>Price : <%=@sheep.price_per_day %> euros per day</p>

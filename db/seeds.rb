@@ -42,8 +42,6 @@ puts "Creating our seed..."
 
   puts "Nickname: #{sheep.nickname}"
 
-  puts "Phone Number : #{phone_number}"
-
   puts "Square Meter Per Hour: #{sheep.square_meter_per_hour}"
 
   puts "Available: #{sheep.available}"

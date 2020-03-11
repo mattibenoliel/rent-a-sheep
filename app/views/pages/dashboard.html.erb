@@ -1,1 +1,44 @@
-<h1>Welcome to the dashboard</h1>
+<h1>My dashboard</h1>
+<p>Welcome <%= current_user.first_name %> <%= link_to "Edit my Profil", edit_user_registration_path  %></p>
+<h2>My Sheeps</h2>
+<% @user_sheeps.each do |sheep| %>
+    <div>
+      <%= link_to sheep.nickname, sheep_path(sheep) %>
+      <span>
+        <% if policy(sheep).destroy? %>
+          <%= link_to sheep_path(sheep),
+                method: :delete,
+                data: { confirm: "Are you sure?" } do %>
+            <i class="las la-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </span>
+      <% sheep.bookings.each do |booking| %>
+        <% if booking.end_date >= Date.today %>
+          <p> Rented by <%= booking.user.first_name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
+        <% end %>
+      <% end %>
+
+        <div>
+          <%if sheep.photo.attached?%>
+            <%= cl_image_tag sheep.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+
+
+<h2>My Bookings</h2>
+<%@user_bookings.each do |book| %>
+  <div>
+      <div>
+        <p>Name : <%= book.sheep.nickname %></p>
+        <p>Owner : <%= book.sheep.user.first_name %></p>
+        <p>Start date :<%= book.start_date %></p>
+        <p>End date : <%= book.end_date %></p>
+        <%if book.sheep.photo.attached?%>
+          <%= cl_image_tag book.sheep.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      </div>
+    </div>
+<% end %>
