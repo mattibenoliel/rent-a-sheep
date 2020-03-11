@@ -1,4 +1,7 @@
 // Specific CSS for your home-page
+.container {
+  min-height: 100vh;
+}
 
 #home {
   text-align: center;
@@ -15,9 +18,9 @@
 
 
 a {
-  color: #000;
+  color: #293F14;
 }
 
 a:hover {
-  color: #000;
+  color: #1EDD88;
 }
