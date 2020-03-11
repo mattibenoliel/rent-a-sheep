@@ -1,33 +1,32 @@
 <h1>All sheeps</h1>
 <div>
   <% if policy(Sheep).create? %>
-    <h5><%= link_to "Put my sheep on rent", new_sheep_path%></h5>
+  <h5><%= link_to "Put my sheep on rent", new_sheep_path%></h5>
   <% end %>
 </div>
-
-<div>
+<div class="row row-cols-1 row-cols-md-3">
   <% @sheeps.each do |sheep| %>
-    <div>
-      <%= link_to sheep.nickname, sheep_path(sheep) %>
+  <div class="col mb-4">
+    <div class="card-sheep">
+      <img src= '<%= cl_image_path sheep.photo.key, height: 300, width: 400, crop: :fill %>'>
+      <div class="card-sheep-infos">
+        <div>
+          <h2><%= link_to sheep.nickname, sheep_path(sheep) %></h2>
+          <p>Short description here!</p>
+        </div>
         <span>
           <% if policy(sheep).destroy? %>
-            <%= link_to sheep_path(sheep),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } do %>
-              <i class="las la-trash-alt"></i>
-            <% end %>
+          <%= link_to sheep_path(sheep),
+          method: :delete,
+          data: { confirm: "Are you sure?" } do %>
+          <i class="las la-trash-alt"></i>
+          <% end %>
           <% end %>
         </span>
-        <div>
-          <%if sheep.photo.attached?%>
-            <%= cl_image_tag sheep.photo.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-        </div>
+        <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> euros per day</h2>
+        <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
       </div>
+    </div>
+  </div>
   <% end %>
 </div>
-
-
-
-
-
