@@ -16,11 +16,13 @@ puts "Reset users and Sheep..."
   # Supprimer les Sheeps
   Sheep.destroy_all
   # Créer les 3 utilisateurs Matti, Celia , David
-  matti = User.new(email: 'benolielmatti@hotmail.fr',password: 'password')
-  celia = User.new(email: 'franceschi.ce@gmail.com',password: 'password')
-  david = User.new(email: 'vanmakdavid.lwg@gmail.com',password: 'password')
+  matti   = User.new(email: 'benolielmatti@hotmail.fr',password: 'password', first_name:"Matti",last_name:"Benoliel",bio:"Ma bio",phone_number:"0000000000")
+  celia   = User.new(email: 'franceschi.ce@gmail.com',password: 'password', first_name:"Celia",last_name:"Franceschi",bio:"Ma bio",phone_number:"0000000000")
+  david   = User.new(email: 'vanmakdavid.lwg@gmail.com',password: 'password', first_name:"David",last_name:"Vanmak",bio:"Ma bio", phone_number:"00000000000")
+  patrick = User.new(email: 'perso@patrickblanc.net',password: 'password', first_name:"Patrick",last_name:"Blanc",bio:"Ma bio", phone_number:"0000000000")
 
-  users = [matti, celia, david]
+
+  users = [matti, celia, david, patrick]
 
 
 puts "Creating our seed..."
