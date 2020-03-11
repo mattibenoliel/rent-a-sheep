@@ -1,1 +1,26 @@
 // Specific CSS for your home-page
+.our-container {
+  height: 100vh;
+}
+
+#home {
+  text-align: center;
+  padding: 150px;
+  background-image: url("https://res.cloudinary.com/dhkpryb9r/image/upload/v1583935452/fgriwmr2ygkjkwfxwmky.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.welcome {
+  margin-bottom: 50px;
+}
+
+
+a {
+  color: #000;
+}
+
+a:hover {
+  color: #000;
+}
