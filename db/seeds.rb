@@ -19,6 +19,8 @@ puts "Reset users and Sheep..."
   matti = User.new(email: 'benolielmatti@hotmail.fr',password: 'password')
   celia = User.new(email: 'franceschi.ce@gmail.com',password: 'password')
   david = User.new(email: 'vanmakdavid.lwg@gmail.com',password: 'password')
+  patrick = User.new(email: 'patrick@blanc.com',password: 'password')
+
 
   users = [matti, celia, david]
 
