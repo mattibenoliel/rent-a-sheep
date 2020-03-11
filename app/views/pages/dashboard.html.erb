@@ -1,59 +1,62 @@
-<h1>My dashboard</h1>
-<p>Welcome <%= current_user.first_name %> <%= link_to "Edit my Profil", edit_user_registration_path  %></p>
-<h2>My Sheeps</h2>
-<div class="row row-cols-1 row-cols-md-3">
-  <% @user_sheeps.each do |sheep| %>
-  <div class="col mb-4">
-    <div class="card-sheep">
-      <%if sheep.photo.attached?%>
-      <img src= '<%= cl_image_path sheep.photo.key, height: 300, width: 400, crop: :fill %>'>
-      <% end %>
-      <div class="card-sheep-infos">
-        <div>
-          <h2><%= link_to sheep.nickname, sheep_path(sheep) %></h2>
-          <p>Short description here!</p>
-        </div>
-        <span>
-          <% if policy(sheep).destroy? %>
-          <%= link_to sheep_path(sheep),
-          method: :delete,
-          data: { confirm: "Are you sure?" } do %>
-          <i class="las la-trash-alt"></i>
+<div class="container">
+  <h1>My dashboard</h1>
+  <p>Welcome <%= current_user.first_name %> <%= link_to "Edit my Profil", edit_user_registration_path  %></p>
+  <h2>My Sheeps</h2>
+  <div class="row row-cols-1 row-cols-md-3">
+    <% @user_sheeps.each do |sheep| %>
+    <div class="col mb-4">
+      <div class="card-sheep">
+        <%if sheep.photo.attached?%>
+        <%= link_to sheep_path(sheep) do %>
+          <img src= '<%= cl_image_path sheep.photo.key, height: 300, width: 400, crop: :fill %>'>
           <% end %>
-          <% end %>
-        </span>
-        <% sheep.bookings.each do |booking| %>
-        <% if booking.end_date >= Date.today %>
-          <p> Rented by <%= booking.user.first_name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
         <% end %>
-      <% end %>
-        <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> euros per day</h2>
-        <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
-      </div>
-    </div>
-  </div>
-  <% end %>
-</div>
-
-<h2>My Bookings</h2>
-
-<div class="row row-cols-1 row-cols-md-3">
-  <%@user_bookings.each do |book| %>
-  <div class="col mb-4">
-    <div class="card-sheep">
-      <%if book.sheep.photo.attached?%>
-      <img src= '<%= cl_image_path book.sheep.photo.key, height: 300, width: 400, crop: :fill %>'>
-      <% end %>
-      <div class="card-sheep-infos">
-        <div>
-          <p>Name : <%= book.sheep.nickname %></p>
-          <p>Owner : <%= book.sheep.user.first_name %></p>
-          <p>Start date :<%= book.start_date %></p>
-          <p>End date : <%= book.end_date %></p>
+        <div class="card-sheep-infos">
+          <div>
+            <h2><%= link_to sheep.nickname, sheep_path(sheep) %></h2>
+            <p>Short description here!</p>
+          </div>
+          <span>
+            <% if policy(sheep).destroy? %>
+            <%= link_to sheep_path(sheep),
+            method: :delete,
+            data: { confirm: "Are you sure?" } do %>
+            <i class="las la-trash-alt"></i>
+            <% end %>
+            <% end %>
+          </span>
+          <% sheep.bookings.each do |booking| %>
+          <% if booking.end_date >= Date.today %>
+            <p> Rented by <%= booking.user.first_name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
+          <% end %>
+        <% end %>
+          <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> euros per day</h2>
+          <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
         </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 
+  <h2>My Bookings</h2>
+
+  <div class="row row-cols-1 row-cols-md-3">
+    <%@user_bookings.each do |book| %>
+    <div class="col mb-4">
+      <div class="card-sheep">
+        <%if book.sheep.photo.attached?%>
+        <img src= '<%= cl_image_path book.sheep.photo.key, height: 300, width: 400, crop: :fill %>'>
+        <% end %>
+        <div class="card-sheep-infos">
+          <div>
+            <p>Name : <%= book.sheep.nickname %></p>
+            <p>Owner : <%= book.sheep.user.first_name %></p>
+            <p>Start date :<%= book.start_date %></p>
+            <p>End date : <%= book.end_date %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
