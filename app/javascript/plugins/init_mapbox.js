@@ -18,7 +18,8 @@ const addMarkersToMap = (map, markers) => {
     element.className = 'marker';
     element.style.width = '25px';
     element.style.height = '25px';
-    element.backgroundColor = '#293F14';
+    element.style.backgroundColor = '#293F14';
+    element.style.symbol = '3';
 
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
