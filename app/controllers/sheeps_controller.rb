@@ -32,6 +32,7 @@ class SheepsController < ApplicationController
     @sheep = Sheep.new(sheep_params)
     authorize @sheep
     @sheep.user = current_user
+    @sheep.address = current_user.address
     if @sheep.save
       redirect_to @sheep, notice: "Your sheep's card was successfully created."
     else
