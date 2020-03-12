@@ -14,11 +14,12 @@ class SheepsController < ApplicationController
       @sheeps = policy_scope(Sheep)
     end
 
-    @sheep_map = Sheep.geocoded
-    @markers = @sheep_map.map do |sheep|
+    @sheeps = @sheeps.geocoded
+    @markers = @sheeps.map do |sheep|
       {
         lat: sheep.latitude,
-        lng: sheep.longitude
+        lng: sheep.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { sheep: sheep })
       }
     end
 
