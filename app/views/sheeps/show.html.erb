@@ -42,7 +42,9 @@
 
   <div class="card-body">
 <!--     <a href="#" class="card-link">Card link</a> -->
-    <%= link_to "Edit my sheep's card", edit_sheep_path, class: "card-link" %>
+    <% if policy(@sheep).edit? %>
+      <%= link_to "Edit my sheep's card", edit_sheep_path, class: "card-link" %>
+    <% end %>
     <%= link_to "Back to all sheeps", sheeps_path, class: "card-link" %>
   </div>
 </div>
