@@ -13,11 +13,16 @@
     </li>
     <li class="list-group-item">
       <p>
-        Can crop <%=@sheep.square_meter_per_hour%> meters square per hour.
+        Can crop : <%=@sheep.square_meter_per_hour%> meters square per hour.
       </p>
     </li>
     <li class="list-group-item">
-      <p> Belongs to <%=@sheep.user.first_name%> </p>
+      <p> Belongs to : <%=@sheep.user.first_name%> </p>
+    </li>
+    <li class="list-group-item">
+      <p>
+        Address : <%=@sheep.user.address %>
+      </p>
     </li>
   </ul>
 
