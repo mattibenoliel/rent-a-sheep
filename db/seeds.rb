@@ -41,6 +41,8 @@ puts "Creating our seed..."
     description: 'It is a very nice sheep'
   )
   sheep.photo.attach(io:file,filename: 'sheep.jpeg')
+  sheep.address = sheep.user.address
+
 
   puts "User: #{sheep.user.email}"
 
@@ -51,6 +53,8 @@ puts "Creating our seed..."
   puts "Available: #{sheep.available}"
 
   puts "Price per day: #{sheep.price_per_day}"
+
+  puts "Owner's address: #{sheep.address}"
 
   puts "\n\n"
 end
