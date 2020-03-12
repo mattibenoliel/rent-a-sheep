@@ -16,13 +16,23 @@ puts "Reset users and Sheep..."
   # Supprimer les Sheeps
   Sheep.destroy_all
   # Créer les 3 utilisateurs Matti, Celia , David
+
+  file_matti = URI.open('https://avatars3.githubusercontent.com/u/50374101?s=400&u=ee79a434fdd6a1d001644b6dc221670289e7102a&v=4')
+  file_patrick = URI.open('https://ca.slack-edge.com/T02NE0241-USTMQQUCT-b8513b00ea1c-512')
+  file_celia = URI.open('https://avatars0.githubusercontent.com/u/58769219?v=4')
+  file_david = URI.open('https://avatars1.githubusercontent.com/u/59261819?s=460&v=4')
+
   matti   = User.create!(email: 'matti@matti.fr',password: 'password', first_name:"Matti",last_name:"Benoliel",bio:"Ma bio",phone_number:Faker::PhoneNumber.cell_phone,address: "Marseille")
   sleep(1)
+  matti.photo.attach(io: file_matti, filename: 'matti.jpg', content_type: 'image/jpg')
   celia   = User.create!(email: 'celia@celia.com',password: 'password', first_name:"Celia",last_name:"Franceschi",bio:"Ma bio",phone_number:Faker::PhoneNumber.cell_phone,address:"Cassis")
   sleep(1)
+  celia.photo.attach(io: file_celia, filename: 'matti.jpg', content_type: 'image/jpg')
   david   = User.create!(email: 'peuks@peuks.com',password: 'password', first_name:"David",last_name:"Vanmak",bio:"Ma bio", phone_number:Faker::PhoneNumber.cell_phone,address:"Paris")
   sleep(1)
+  david.photo.attach(io: file_david, filename: 'matti.jpg', content_type: 'image/jpg')
   patrick = User.create!(email: 'patrick@patrick.net',password: 'password', first_name:"Patrick",last_name:"Blanc",bio:"Ma bio", phone_number:Faker::PhoneNumber.cell_phone,address:"Lyon")
+  patrick.photo.attach(io: file_patrick, filename: 'matti.jpg', content_type: 'image/jpg')
 
 
   users = [matti, celia, david, patrick]

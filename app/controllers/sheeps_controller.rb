@@ -3,7 +3,6 @@ class SheepsController < ApplicationController
   skip_after_action :verify_policy_scoped, only: [:index]
   def index
     if params[:query].present?
-      @sheeps = Sheep.global_search(params[:query])
       if params[:start_date].present? && params[:end_date].present?
         overlaping_bookings = Booking.where("start_date <= ? AND ? <= end_date", params[:end_date], params[:start_date])
         @sheeps = @sheeps.where.not(id: overlaping_bookings.pluck(:sheep_id))
