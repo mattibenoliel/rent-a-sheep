@@ -10,7 +10,9 @@
     <div class="col mb-4">
       <div class="card-sheep">
         <%= link_to sheep_path(sheep) do %>
-          <img src= '<%= cl_image_path sheep.photo.key, height: 300, width: 400, crop: :fill %>'>
+        <% if sheep.photo.attached? %>
+          <%= cl_image_tag sheep.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
           <% end %>
         <div class="card-sheep-infos">
           <div>

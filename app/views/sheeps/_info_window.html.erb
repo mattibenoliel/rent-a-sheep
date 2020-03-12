@@ -1,3 +1,5 @@
-<h2><%= sheep.nickname %></h2>
-<p><%= sheep.description %></p>
-<p><%= sheep.address %></p>
+<% sheeps.each do |sheep| %>
+  <h2><%= link_to sheep.nickname, sheep_path(sheep) %></h2>
+  <p><%= sheep.description %></p>
+  <p><%= sheep.address %></p>
+<% end %>
