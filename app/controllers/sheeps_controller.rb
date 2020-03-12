@@ -1,7 +1,16 @@
 class SheepsController < ApplicationController
   before_action :set_sheep, only: [:show, :destroy, :edit, :update]
+  skip_after_action :verify_policy_scoped, only: [:index]
   def index
-    @sheeps = policy_scope(Sheep)
+    if params[:query].present?
+      @sheeps = Sheep.global_search(params[:query])
+      if params[:start_date].present?
+        # bookings = Booking.where(start_date: params[:start_date].first.to_date..params[:end_date].first.to_date)
+        # @sheeps.where.not(id: bookings.pluck(:sheep_id))
+      end
+    else
+      @sheeps = policy_scope(Sheep)
+    end
   end
 
   def show

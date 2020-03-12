@@ -6,6 +6,13 @@
   <%= cl_image_tag @sheep.photo.key,class: "card-img-top",alt: "Card image cap" %>
   <div class="card-body">
      <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <% @sheep.bookings.each do |book| %>
+        Booking by <%= book.user.first_name %>:
+          <p>Start Date : <%= book.start_date %></p>
+          <p>End Date : <%= book.end_date %></p>
+        <% end %>
+      </li>
     <li class="list-group-item">
       <p>
         Price : <%=@sheep.price_per_day %> euros per day
