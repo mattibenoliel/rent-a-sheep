@@ -16,10 +16,13 @@ puts "Reset users and Sheep..."
   # Supprimer les Sheeps
   Sheep.destroy_all
   # Créer les 3 utilisateurs Matti, Celia , David
-  matti   = User.new(email: 'matti@matti.fr',password: 'password', first_name:"Matti",last_name:"Benoliel",bio:"Ma bio",phone_number:Faker::PhoneNumber.cell_phone,address:Faker::Address.full_address)
-  celia   = User.new(email: 'celia@celia.com',password: 'password', first_name:"Celia",last_name:"Franceschi",bio:"Ma bio",phone_number:Faker::PhoneNumber.cell_phone,address:Faker::Address.full_address)
-  david   = User.new(email: 'peuks@peuks.com',password: 'password', first_name:"David",last_name:"Vanmak",bio:"Ma bio", phone_number:Faker::PhoneNumber.cell_phone,address:Faker::Address.full_address)
-  patrick = User.new(email: 'patrick@patrick.net',password: 'password', first_name:"Patrick",last_name:"Blanc",bio:"Ma bio", phone_number:Faker::PhoneNumber.cell_phone,address:Faker::Address.full_address)
+  matti   = User.new(email: 'matti@matti.fr',password: 'password', first_name:"Matti",last_name:"Benoliel",bio:"Ma bio",phone_number:Faker::PhoneNumber.cell_phone,address: "167 rue paradis, 13006 Marseille")
+  sleep(1)
+  celia   = User.new(email: 'celia@celia.com',password: 'password', first_name:"Celia",last_name:"Franceschi",bio:"Ma bio",phone_number:Faker::PhoneNumber.cell_phone,address:"17 rue paradis, 13006 Marseille")
+  sleep(1)
+  david   = User.new(email: 'peuks@peuks.com',password: 'password', first_name:"David",last_name:"Vanmak",bio:"Ma bio", phone_number:Faker::PhoneNumber.cell_phone,address:"16 rue paradis, 13006 Marseille")
+  sleep(1)
+  patrick = User.new(email: 'patrick@patrick.net',password: 'password', first_name:"Patrick",last_name:"Blanc",bio:"Ma bio", phone_number:Faker::PhoneNumber.cell_phone,address:"178 rue paradis, 13006 Marseille")
 
 
   users = [matti, celia, david, patrick]
