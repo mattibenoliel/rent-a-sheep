@@ -4,7 +4,33 @@
     <p>Welcome !</p>
   </div>
 
+
+
+  <%= form_tag sheeps_path, method: :get do %>
+    <span>Ville</span>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control-sheep",
+      placeholder: "Find a sheep"
+    %>
+    <span>Date de début</span>
+    <%= date_field :start_date,
+      params[:start_date],
+      class: "form-control-date",
+      placeholder: "Start date"
+    %>
+    <span>Date de fin</span>
+    <%= date_field :end_date,
+      params[:end_date],
+      class: "form-control-date",
+      placeholder: "End date"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+
   <div class="title">
     <h2><%= link_to "Check all our available Sheep  !", sheeps_path  %></h2>
   </div>
+
+
 </div>
