@@ -11,6 +11,15 @@ class SheepsController < ApplicationController
     else
       @sheeps = policy_scope(Sheep)
     end
+
+    @sheep_map = Sheep.geocoded
+    @markers = @sheep_map.map do |sheep|
+      {
+        lat: sheep.latitude,
+        lng: sheep.longitude
+      }
+    end
+
   end
 
   def show
