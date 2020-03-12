@@ -5,8 +5,8 @@ class SheepsController < ApplicationController
     if params[:query].present?
       @sheeps = Sheep.global_search(params[:query])
       if params[:start_date].present?
-        # bookings = Booking.where(start_date: params[:start_date].first.to_date..params[:end_date].first.to_date)
-        # @sheeps.where.not(id: bookings.pluck(:sheep_id))
+        # overlaping_bookings = Booking.where("start_date <= ? AND ? <= end_date", params[:end_date], params[:start_date])
+        # @sheeps = @sheeps.where.not(id: overlaping_bookings.pluck(:sheep_id))
       end
     else
       @sheeps = policy_scope(Sheep)
