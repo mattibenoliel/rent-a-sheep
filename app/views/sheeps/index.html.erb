@@ -28,7 +28,7 @@
             <% end %>
             <% end %>
           </span>
-          <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> euros per day</h2>
+          <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> €/Day</h2>
           <% if sheep.user.photo.attached? %>
             <%= cl_image_tag sheep.user.photo.key, height: 120, width: 120, crop: :fill, class:"card-trip-user avatar-bordered" %>
           <% else %>
