@@ -18,6 +18,7 @@ class SheepsController < ApplicationController
       {
         lat: sheeps.first.latitude,
         lng: sheeps.first.longitude,
+        count: sheeps.size,
         infoWindow: render_to_string(partial: "info_window", locals: { sheeps: sheeps })
       }
     end
