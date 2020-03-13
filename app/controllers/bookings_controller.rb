@@ -6,6 +6,8 @@ class BookingsController < ApplicationController
     @booking.sheep = @sheep
     authorize(@booking)
     if @booking.save
+      @sheep.available = false
+      @sheep.save
       redirect_to dashboard_path, notice: "Your sheep was successfully booked."
     else
       render "sheeps/show"
