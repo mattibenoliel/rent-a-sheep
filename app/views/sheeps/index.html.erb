@@ -10,7 +10,9 @@
     <div class="col mb-4">
       <div class="card-sheep">
         <%= link_to sheep_path(sheep) do %>
-          <img src= '<%= cl_image_path sheep.photo.key, height: 300, width: 400, crop: :fill %>'>
+        <% if sheep.photo.attached? %>
+          <%= cl_image_tag sheep.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
           <% end %>
         <div class="card-sheep-infos">
           <div>
@@ -26,7 +28,7 @@
             <% end %>
             <% end %>
           </span>
-          <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> euros per day</h2>
+          <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> €/Day</h2>
           <% if sheep.user.photo.attached? %>
             <%= cl_image_tag sheep.user.photo.key, height: 120, width: 120, crop: :fill, class:"card-trip-user avatar-bordered" %>
           <% else %>

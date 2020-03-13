@@ -14,11 +14,12 @@ class SheepsController < ApplicationController
     end
 
     @sheeps = @sheeps.geocoded
-    @markers = @sheeps.map do |sheep|
+    @markers = @sheeps.group_by(&:latitude).map do |latitude,sheeps|
       {
-        lat: sheep.latitude,
-        lng: sheep.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { sheep: sheep })
+        lat: sheeps.first.latitude,
+        lng: sheeps.first.longitude,
+        count: sheeps.size,
+        infoWindow: render_to_string(partial: "info_window", locals: { sheeps: sheeps })
       }
     end
 

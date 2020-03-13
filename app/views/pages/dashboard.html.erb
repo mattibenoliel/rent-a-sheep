@@ -30,16 +30,20 @@
             <p> Rented by <%= booking.user.first_name %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
           <% end %>
         <% end %>
-          <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> euros per day</h2>
-          <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+          <h2 class="card-sheep-pricing"><%= sheep.price_per_day %> €/Day</h2>
+          <% if sheep.user.photo.attached? %>
+            <%= cl_image_tag sheep.user.photo.key, height: 120, width: 120, crop: :fill, class:"card-trip-user avatar-bordered" %>
+          <% else %>
+            <img src='https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg' class="card-trip-user avatar-bordered"/>
+          <% end %>
         </div>
       </div>
     </div>
     <% end %>
   </div>
 
+<% if @user_bookings.any? %>
   <h2>My Bookings</h2>
-
   <div class="row row-cols-1 row-cols-md-3">
     <%@user_bookings.each do |book| %>
     <div class="col mb-4">
@@ -59,4 +63,10 @@
     </div>
     <% end %>
   </div>
+<% else %>
+  <p>No bookings yet</p>
+<% end %>
+
+
+
 </div>
