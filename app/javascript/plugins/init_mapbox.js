@@ -13,7 +13,16 @@ const buildMap = () => {
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
-    new mapboxgl.Marker()
+
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('https://cdn0.iconfinder.com/data/icons/farm-and-agriculture/512/farm-15-512.png')`;
+    element.style.backgroundSize = 'contain';
+    element.style.width = '50px';
+    element.style.height = '50px';
+    element.insertAdjacentHTML('beforeend', `<span class="sheep-count">${marker.count}</span>`)
+
+    new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
