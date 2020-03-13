@@ -42,8 +42,9 @@
     <% end %>
   </div>
 
+<% if @user_bookings.any? %>
+<%raise %>
   <h2>My Bookings</h2>
-
   <div class="row row-cols-1 row-cols-md-3">
     <%@user_bookings.each do |book| %>
     <div class="col mb-4">
@@ -63,4 +64,10 @@
     </div>
     <% end %>
   </div>
+<% else %>
+  <p>No bookings yet</p>
+<% end %>
+
+
+
 </div>
